@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nirogam</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#FAFAFB;--ink:#101828;--mut:#667085;--line:#E4E7EC;--ac:#138808;--sf:rgba(255,255,255,.4);--acs:rgba(19,136,8,.1);--sa:#E8801A;--gr:#138808;--bl:#1E3A8A;--bt:#1E3A8A;--gl:rgba(255,255,255,.55);--gb:rgba(255,255,255,.75);--sh:0 8px 32px rgba(30,58,138,.10);--g1:rgba(232,128,26,.26);--g2:rgba(19,136,8,.20);--g3:rgba(30,58,138,.20);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0F14;--ink:#E8ECF2;--mut:#93A0B4;--line:#1E2733;--ac:#4ADE80;--sf:rgba(255,255,255,.05);--acs:rgba(74,222,128,.12);--sa:#FFA94D;--gr:#4ADE80;--bl:#8FA8FF;--bt:#3B5BDB;--gl:rgba(18,26,38,.55);--gb:rgba(255,255,255,.12);--sh:0 8px 32px rgba(0,0,0,.4);--g1:rgba(255,169,77,.18);--g2:rgba(74,222,128,.13);--g3:rgba(80,110,255,.24)}}
+:root[data-theme="dark"]{--bg:#0B0F14;--ink:#E8ECF2;--mut:#93A0B4;--line:#1E2733;--ac:#4ADE80;--sf:rgba(255,255,255,.05);--acs:rgba(74,222,128,.12);--sa:#FFA94D;--gr:#4ADE80;--bl:#8FA8FF;--bt:#3B5BDB;--gl:rgba(18,26,38,.55);--gb:rgba(255,255,255,.12);--sh:0 8px 32px rgba(0,0,0,.4);--g1:rgba(255,169,77,.18);--g2:rgba(74,222,128,.13);--g3:rgba(80,110,255,.24)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Geist,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-weight:600;letter-spacing:-.025em;line-height:1.12;margin:0}
+p{margin:0}a{color:inherit}
+.w{max-width:1040px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+.nb{display:flex;align-items:center;gap:6px 22px;flex-wrap:wrap;padding:12px 0}
+.logo{font-weight:600;letter-spacing:-.02em;text-decoration:none;margin-right:auto}
+.nb a.l{text-decoration:none;color:var(--mut);font-size:15px;padding:4px 0;border-bottom:2px solid transparent}
+.nb a.l[aria-current=page]{color:var(--ink);border-color:var(--ac)}
+button{font:inherit;color:inherit;cursor:pointer}
+.tg{border:1px solid var(--line);background:none;border-radius:8px;padding:5px 11px;font-size:14px}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+.pg{display:none;padding:56px 0 72px}.pg.on{display:block}
+h1{font-size:clamp(38px,6.4vw,66px);max-width:780px}
+h2{font-size:clamp(26px,3.4vw,36px);max-width:640px}
+.lead{color:var(--mut);font-size:19px;max-width:600px;margin-top:18px}
+.row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.b{background:var(--ink);color:var(--bg);border:1px solid var(--ink);border-radius:8px;padding:10px 18px;text-decoration:none;font-weight:500}
+.b.g{background:none;color:var(--ink);border-color:var(--line)}
+.ft{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:64px;border-top:1px solid var(--line);padding-top:24px}
+.ft h3,.sr h3{font-size:17px;letter-spacing:-.01em;margin-bottom:6px}
+.ft p,.sr p,.mut{color:var(--mut)}
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:20px}
+.sg b{display:block;font-size:34px;font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.sg span{display:block;color:var(--mut);font-size:14.5px;margin-top:6px}
+.sg small{display:block;color:var(--mut);font-size:12px;opacity:.8;margin-top:4px}
+.sec{margin-top:72px}
+.sr{display:grid;grid-template-columns:200px 1fr;gap:12px 40px;padding:22px 0;border-top:1px solid var(--line)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:28px}
+ul.p{margin:8px 0 0;padding-left:18px;color:var(--mut)}
+/* prototype */
+.app{margin-top:28px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--sf)}
+.ab{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--bg)}
+.tabs button{border:0;background:none;padding:6px 12px;border-radius:6px;color:var(--mut);font-size:15px}
+.tabs button[aria-selected=true]{background:var(--sf);color:var(--ink);font-weight:500}
+.pn{display:none;grid-template-columns:1fr 1.1fr;gap:28px;padding:24px}.pn.on{display:grid}
+.who b{display:block;font-size:18px}.who span{color:var(--mut);font-size:14px}
+.tl{list-style:none;margin:18px 0 0;padding:0}
+.tl li{padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.tl small{display:block;color:var(--mut)}
+.bx{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px;font-size:15px}
+.bx h3{font-size:16px;margin-bottom:8px}
+.lab{width:100%;border-collapse:collapse;margin:6px 0 12px;font-size:14px}
+.lab td,.lab th{padding:6px 4px;border-bottom:1px solid var(--line);text-align:left;font-weight:400}
+.lab th{color:var(--mut)}.hi{color:#B54708;font-weight:500}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hi{color:#F5A55B}}
+:root[data-theme="dark"] .hi{color:#F5A55B}
+.out{display:none;margin-top:12px;padding:12px;background:var(--acs);border-radius:8px}
+.chat{display:flex;flex-direction:column;gap:8px;min-height:140px;max-height:240px;overflow:auto;margin-bottom:12px}
+.m{padding:8px 12px;border-radius:10px;max-width:90%;font-size:15px;background:var(--sf)}
+.m.u{align-self:flex-end;background:var(--ink);color:var(--bg)}
+.ch{display:flex;gap:8px;flex-wrap:wrap}
+.ch button{border:1px solid var(--line);background:none;border-radius:999px;padding:5px 12px;font-size:14px}
+.ch button:hover{border-color:var(--ac)}
+form{display:grid;gap:14px;max-width:460px;margin-top:28px}
+label{font-size:14px;font-weight:500;display:grid;gap:6px}
+input,textarea{font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;width:100%}
+#st{color:var(--ac);font-size:15px;min-height:24px}
+footer{border-top:1px solid var(--line);padding:36px 0 44px;font-size:14.5px;color:var(--mut)}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer h3{color:var(--ink);font-size:15px;letter-spacing:0;margin-bottom:8px}
+footer a{display:block;text-decoration:none;padding:2px 0}footer a:hover{color:var(--ink)}
+@media(max-width:780px){.ft,.sg,.two,.pn.on,.fg{grid-template-columns:1fr 1fr}.sr,.two,.pn.on,.fg{grid-template-columns:1fr}}
+@media(max-width:480px){.ft,.sg{grid-template-columns:1fr}}
+
+.s3{grid-template-columns:repeat(3,1fr)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(44vw 44vw at 6% 0,var(--g1),transparent 70%),radial-gradient(40vw 40vw at 100% 8%,var(--g3),transparent 70%),radial-gradient(46vw 46vw at 72% 100%,var(--g2),transparent 70%)}
+body::after{content:"";position:fixed;top:0;left:0;right:0;height:3px;z-index:20;pointer-events:none;background:linear-gradient(90deg,var(--sa) 33.3%,#fff 33.3% 66.6%,var(--gr) 66.6%)}
+header{background:none;border:0}
+.w.nb{justify-content:center;width:fit-content;max-width:calc(100% - 24px);margin:14px auto;padding:8px 20px;border-radius:999px}
+.logo{margin-right:8px}
+.nb a.l[aria-current=page]{border-color:var(--sa)}
+.w.nb,.tg,.b.g,.sr,.ft>div,.sg>div,.bx,.app,.fg,.m,input,textarea,.ch button{background:var(--gl);border:1px solid var(--gb);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);box-shadow:var(--sh)}
+.b{background:color-mix(in srgb,var(--bt) 85%,transparent);color:#fff;border:1px solid var(--gb);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:var(--sh)}
+.b.g{color:var(--ink)}
+.m.u{background:var(--bt);color:#fff}
+.ab{background:none}
+.sr{border-radius:16px;padding:20px 24px;margin-bottom:12px}
+.ft{border:0;padding-top:0;margin-top:48px}
+.ft>div,.sg>div{border-radius:16px;padding:18px;border-top-width:3px}
+.ft>div:nth-child(1),.sg>div:nth-child(3n+1){border-top-color:var(--sa)}
+.ft>div:nth-child(2),.sg>div:nth-child(3n+2){border-top-color:var(--bl)}
+.ft>div:nth-child(3),.sg>div:nth-child(3n){border-top-color:var(--gr)}
+.sg{gap:16px}
+.app,.bx{border-radius:16px}
+footer{border:0}
+.fg{padding:24px 28px;border-radius:20px}
+@media(max-width:780px){.s3{grid-template-columns:1fr 1fr}.w.nb{border-radius:22px}}
+@media(max-width:480px){.s3{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="w nb"><a class="logo" href="#home">Nirogam</a>
+<a class="l" href="#home">Home</a><a class="l" href="#platform">Platform</a><a class="l" href="#prototype">Prototype</a><a class="l" href="#impact">Impact</a><a class="l" href="#contact">Contact</a>
+<button class="tg" id="tg" aria-label="Switch between light and dark mode"></button></div></header>
+
+<main class="w">
+<section class="pg on" id="home">
+<p style="margin:0 0 14px;font-weight:600;color:var(--sa)">Nirogam, the unified healthcare interface</p>
+<h1>Every health record, in one place.</h1>
+<p class="lead">Nirogam is a unified healthcare interface. It does for health records what UPI did for payments: one simple layer across clinics, labs and pharmacies, with AI that explains it.</p>
+<div class="row"><a class="b" href="#prototype">Try the prototype</a><a class="b g" href="#platform">How it works</a></div>
+<div class="ft">
+<div><h3>Unified record</h3><p>One consent-based history that follows the patient across facilities.</p></div>
+<div><h3>AI agents</h3><p>Explain reports in simple language and summarise long histories for doctors.</p></div>
+<div><h3>Open platform</h3><p>Built on openEHR and FHIR, with RAG and MCP so others can build on it.</p></div></div>
+<div class="sec"><h2>India has the records. Rural clinics lack the specialists to use them.</h2>
+<div class="sg">
+<div><b>79.9%</b><span>specialist shortfall at rural Community Health Centres</span><small>4,413 of 21,964 required. Health Dynamics of India 2022-23, MoHFW</small></div>
+<div><b>1 : 836</b><span>doctor-to-population ratio nationally</span><small>Union Health Ministry, 2024</small></div>
+<div><b>104 crore+</b><span>health records linked under ABDM</span><small>PIB, July 2026</small></div>
+<div><b>93 crore+</b><span>ABHA health accounts created</span><small>PIB, July 2026</small></div></div></div>
+</section>
+
+<section class="pg" id="platform">
+<h1>Like UPI, for your health history.</h1>
+<p class="lead">UPI did not replace banks. It made them work together. Nirogam does the same for hospitals, labs and pharmacies.</p>
+<div class="sec">
+<div class="sr"><h3>Unified interface</h3><div><p>One consent-based record. Doctors see the full history in one place. Patients choose who sees what and can withdraw access.</p></div></div>
+<div class="sr"><h3>Explains reports</h3><p>Turns a blood report into plain language for the patient, with questions to ask the doctor.</p></div>
+<div class="sr"><h3>Summarises history</h3><p>Gives doctors a short, readable summary of years of visits, tests and prescriptions.</p></div>
+<div class="sr"><h3>Answers in context</h3><p>Doctors can go back and forth with an agent that already has the patient's records loaded.</p></div>
+<div class="sr"><h3>Open to builders</h3><p>openEHR and HL7 FHIR standards, RAG and MCP interfaces, and custom AI services for private organisations.</p></div></div>
+</section>
+
+<section class="pg" id="prototype">
+<h2>Prototype</h2><p class="lead">A clickable mockup with dummy data. Switch views, then try the buttons.</p>
+<div class="app"><div class="ab"><div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="pa">Patient</button><button role="tab" aria-selected="false" data-t="dr">Doctor</button></div><span class="mut" style="font-size:13px">Dummy data only</span></div>
+<div class="pn on" id="pa"><div><div class="who"><b>Lakshmi Devi</b><span>58 · Female · Nashik, Maharashtra</span></div>
+<ul class="tl"><li><b>Blood test</b><small>Sahyadri Diagnostics · 12 Sep 2026</small></li><li><b>Consultation</b><small>Dr. Rohan Verma, Nashik Civil Hospital · 3 Sep 2026</small></li><li><b>Metformin 500 mg dispensed</b><small>Jan Aushadhi Kendra, Dindori · 3 Sep 2026</small></li><li><b>Check-up</b><small>PHC Dindori, ANM Sunita Pawar · 14 Jun 2026</small></li></ul></div>
+<div class="bx"><h3>Blood report</h3><table class="lab"><tr><th>Test</th><th>Result</th><th>Normal</th></tr><tr><td>Haemoglobin</td><td class="hi">9.8 g/dL</td><td>12–15</td></tr><tr><td>Fasting sugar</td><td class="hi">142 mg/dL</td><td>70–100</td></tr><tr><td>Creatinine</td><td>0.9 mg/dL</td><td>0.6–1.1</td></tr></table>
+<button class="b" id="ex">Explain in simple words</button><div class="out" id="exo"><b>In simple words:</b> Your haemoglobin is a little low, which can make you feel tired. It often improves with iron-rich food and tablets. Your sugar is higher than normal, so keep taking your medicine and see your doctor soon. Your kidney test is normal.<br><br>Ask your doctor: should I start iron tablets?</div></div></div>
+<div class="pn" id="dr"><div><div class="who"><b>Ramesh Patil</b><span>61 · Male · Kolhapur · 14 years of history</span></div>
+<div class="bx" style="margin-top:16px"><h3>Agent summary</h3>Type 2 diabetes since 2012 and hypertension since 2016. Sugar control improved over the last 6 months. Last visit: knee pain. Allergy: penicillin.</div>
+<ul class="tl"><li><b>HbA1c 7.4%</b><small>Aug 2026 · Chaitanya Labs</small></li><li><b>Amlodipine 5 mg started</b><small>2016 · Dr. Meena Iyer</small></li></ul></div>
+<div class="bx"><h3>Ask the agent</h3><div class="chat" id="cht" aria-live="polite"><div class="m">Ramesh Patil's records are loaded. What would you like to know?</div></div>
+<div class="ch"><button>Any drug allergies?</button><button>How has his sugar changed?</button><button>List current medicines</button></div></div></div></div>
+</section>
+
+<section class="pg" id="impact">
+<h1>More care from the same clinic hours.</h1>
+<div class="sec" style="margin-top:40px">
+<div class="sr"><h3>2× doctor capacity</h3><p>Target: for example 50 to 100 patients a day, with agents handling history review. To be validated in pilots.</p></div>
+<div class="sr"><h3>Fewer repeat tests</h3><p>Every facility sees the same consented record, so fewer tests are repeated and fewer files get lost.</p></div>
+<div class="sr"><h3>Rural first, Pan-India</h3><p>Designed for patients who depend on PHCs and CHCs, and open to developers, NGOs and hospitals.</p></div>
+<div class="sr"><h3>Who we need</h3><p>Pilot partners (NGOs, government and private hospitals), government support, and CSR partners.</p></div></div>
+<div class="sec"><h2>The numbers behind the need</h2>
+<div class="sg s3">
+<div><b>541 of 5,480</b><span>functioning CHCs have all four specialists</span><small>Rural Health Statistics 2021-22, MoHFW</small></div>
+<div><b>83.3%</b><span>shortfall of surgeons at rural CHCs; 80.5% for paediatricians</span><small>Health Dynamics of India 2022-23</small></div>
+<div><b>5,491</b><span>rural CHCs across 757 districts</span><small>Health Dynamics of India 2022-23</small></div>
+<div><b>9.85 lakh</b><span>healthcare professionals registered on national registries</span><small>Mission Steering Group, July 2026</small></div>
+<div><b>5.33 lakh</b><span>health facilities registered, 2.72 lakh already on ABDM software</span><small>Mission Steering Group, July 2026</small></div>
+<div><b>24 crore</b><span>ABHA-linked scan-and-register tokens issued at facilities</span><small>PIB, July 2026</small></div></div></div>
+<div class="row"><a class="b" href="#contact">Get in touch</a></div>
+</section>
+
+<section class="pg" id="contact">
+<h2>Send feedback</h2><p class="lead">Tell us what you think, or how you'd like to pilot or build on Nirogam.</p>
+<form id="fm"><label>Name<input name="n" required autocomplete="name"></label><label>Email<input name="e" type="email" required autocomplete="email"></label><label>Message<textarea name="m" rows="4" required></textarea></label>
+<div><button class="b" type="submit">Submit</button></div><p id="st" role="status"></p></form>
+</section>
+</main>
+
+<footer><div class="w fg">
+<div><h3>Nirogam</h3><p>Unified healthcare interface. A prototype by Team AVINYA for Smart India Hackathon 2026. All patient data on this site is fictional.</p></div>
+<div><h3>Contact</h3><a href="mailto:contact@example.com">contact@example.com</a><a href="tel:+910000000000">+91 00000 00000</a><span>Pune, Maharashtra, India</span></div>
+<div><h3>Find us</h3><a href="#">LinkedIn</a><a href="#">Twitter</a><a href="mailto:contact@example.com">Email</a></div></div></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+// theme
+const R=document.documentElement,tg=$('#tg');
+const dark=()=>R.dataset.theme?R.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+const lab=()=>tg.textContent=dark()?'Light mode':'Dark mode';
+try{const t=localStorage.getItem('ss-theme');if(t)R.dataset.theme=t}catch(e){}
+lab();
+tg.onclick=()=>{R.dataset.theme=dark()?'light':'dark';try{localStorage.setItem('ss-theme',R.dataset.theme)}catch(e){}lab()};
+// router
+const T={home:'Nirogam',platform:'Platform',prototype:'Prototype',impact:'Impact',contact:'Contact'};
+function route(){const h=(location.hash||'#home').slice(1);const id=T[h]?h:'home';
+$$('.pg').forEach(p=>p.classList.toggle('on',p.id===id));
+$$('.nb a.l').forEach(a=>a.getAttribute('href')==='#'+id?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+document.title=(id==='home'?'':T[id]+' – ')+'Nirogam';scrollTo(0,0)}
+addEventListener('hashchange',route);route();
+// prototype
+$$('.tabs button').forEach(b=>b.onclick=()=>{$$('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));$$('.pn').forEach(p=>p.classList.toggle('on',p.id===b.dataset.t))});
+$('#ex').onclick=()=>$('#exo').style.display='block';
+const A={"Any drug allergies?":"Yes. Penicillin allergy (rash), recorded in 2014 at Kolhapur District Hospital.","How has his sugar changed?":"HbA1c fell from 8.9% (Feb 2026) to 7.4% (Aug 2026) after his metformin dose was adjusted.","List current medicines":"Metformin 500 mg twice daily, Amlodipine 5 mg once daily, Paracetamol 500 mg when needed for knee pain."};
+$$('.ch button').forEach(b=>b.onclick=()=>{const c=$('#cht'),add=(t,u)=>{const d=document.createElement('div');d.className='m'+(u?' u':'');d.textContent=t;c.append(d);c.scrollTop=c.scrollHeight};add(b.textContent,1);setTimeout(()=>add(A[b.textContent]),450)});
+// feedback form
+$('#fm').onsubmit=async ev=>{ev.preventDefault();const f=new FormData(ev.target),d={name:f.get('n'),email:f.get('e'),message:f.get('m'),at:new Date().toISOString()},st=$('#st');
+const u='mailto:contact@example.com?subject='+encodeURIComponent('Nirogam feedback from '+d.name)+'&body='+encodeURIComponent(d.message+'\n\n'+d.name+' ('+d.email+')');
+st.innerHTML='Your email app should open with your feedback ready to send. If it does not, <a href="'+u+'">use this link</a>.';location.href=u};
+</script></body></html>
